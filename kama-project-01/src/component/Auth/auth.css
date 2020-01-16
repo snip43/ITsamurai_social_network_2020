@@ -1,0 +1,8 @@
+.auth a {
+    display: block;
+    color: #000;
+}
+
+.auth a:hover {
+    background-color: transparent;
+}

@@ -1,0 +1,13 @@
+a {
+    color: #17a2b8;
+}
+
+a:active {
+    background: #17a2b8;
+}
+
+a:hover {
+    text-decoration: none;
+    background: #17a2b8;
+    color: #fff;
+}

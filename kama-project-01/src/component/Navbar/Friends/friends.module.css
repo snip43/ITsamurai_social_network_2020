@@ -1,0 +1,25 @@
+.friends__cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 5%;
+}
+
+@media (max-width: 670px) {
+    .friends__cards {
+        justify-content: center;
+        flex-direction: column;
+    }
+    h3 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 576px) {
+    .friends__cards {
+        flex-direction: column;
+    }
+    h3 {
+        font-size: 1.5em;
+    }
+}

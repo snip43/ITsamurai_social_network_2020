@@ -1,0 +1,10 @@
+.formControl {
+    display: flex;
+    justify-content: space-between;
+}
+
+span.error {
+    color: red;
+    text-align: left;
+    font-size: 0.7em;
+}

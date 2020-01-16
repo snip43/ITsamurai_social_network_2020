@@ -1,0 +1,31 @@
+.pages {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+}
+
+.page {
+    border: 1px solid black;
+    flex-basis: 10%;
+}
+
+.selectedPage {
+    font-weight: bold;
+    /* font-size: 1.2em; */
+    color: #17A2B8;
+    border: 1px solid #17A2B8;
+}
+
+span:hover {
+    cursor: pointer;
+    color: #17A2B8;
+    font-weight: bold;
+    border-color: #17A2B8;
+}
+
+.button {
+    margin: 0 3px;
+}
