@@ -14,7 +14,6 @@ class AuthContainer extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		userId: state.authLogin.data.id,
 		email: state.authLogin.data.email,
 		login: state.authLogin.data.login,
 		isAuth: state.authLogin.data.isAuth

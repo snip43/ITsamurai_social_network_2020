@@ -132,7 +132,7 @@ export const profileInfo = (userId) => async(dispatch) => {
 
 export const profileStatus = (userId) => async(dispatch) => {
 	let data =	usersAPI.getStatus(userId)
-			dispatch(setStatus(data.data))
+		dispatch(setStatus(data.data))
 		}
 
 export const updateProfileStatus = (status) => async(dispatch) => {

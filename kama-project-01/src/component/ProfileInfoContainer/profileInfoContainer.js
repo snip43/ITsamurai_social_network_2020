@@ -13,7 +13,7 @@ componentDidMount(){
 	 if(!userId) {
 		userId = this.props.profile.userId;
 		if(!userId) {
-			this.props.profile.history.push('/login');
+			this.props.history.push('/login');
 		} 
 	 }
 	this.props.profileInfo(userId);
@@ -34,7 +34,7 @@ componentDidMount(){
 							/>
 	}
 }
-
+   
 // const mapStateToProps = (state)=> {
 // 	return {
 // 		profile: state.profilePage.profileData,

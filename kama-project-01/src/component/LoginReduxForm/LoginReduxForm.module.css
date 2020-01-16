@@ -3,3 +3,10 @@
     font-weight: bold;
     padding: 5px;
 }
+
+.rememberMe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+}

@@ -10,7 +10,7 @@ import withAuthRedirect from '../../../hoc/withAuthRedirect';
 class Profile extends Component {
 	render() {
 		return (
-			<div className='ml-3 px-0'>
+			<div className='ml-3 px-0'> 
 				<ProfileInfoContainer />
 				<NewPostContainer />
 				<AllPostsContainer />

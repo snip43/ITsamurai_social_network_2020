@@ -1,29 +1,29 @@
 import React from 'react';
 import LoginReduxForm from '../LoginReduxForm';
 import {connect} from 'react-redux';
-import {login,logout} from '../../redux/auth_login-reducer';
+import {login} from '../../redux/auth_login-reducer';
 import {Redirect} from 'react-router-dom';
+import styles from './login.module.css';
 
 
 
-const Login = ({login,logout,isAuth}) => {
+const Login = ({login,isAuth}) => {
 
 const submit = formData => {
 	login(formData.email,formData.password,formData.rememberMe)
 }
 
 if(isAuth) {
-	return <Redirect to={'/profile'} />
+	return <Redirect to={'/profile'} /> 
 }
-	return <div className='d-flex flex-column align-items-center border border-warning w-50'>
+	return <div className={styles.loginForm}>
 		<h1>LOGIN</h1>
 		<LoginReduxForm onSubmit={submit}/>
 	</div>
 }
 
 const mapDispatchToProps = {
-	login,
-	logout
+	login
 }
 
 const mapStateToProps = (state) => ({
