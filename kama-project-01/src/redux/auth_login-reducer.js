@@ -18,7 +18,7 @@ const authLoginReducer = (state = initinalState, action) => {
 			return {
 					...state,
 					data: { ...action.data,
-							isAuth: action.isAuth	}
+							isAuth: action.data.isAuth	}
 			
 				}
 					
@@ -48,7 +48,7 @@ export const login = (email,password,rememberMe,isAuth) => async(dispatch) => {
 export const logout = () => async(dispatch) => {
 		let data = await authAPI.logout();
 			if(data.data.resultCode===0) {
-				dispatch(setUserDataAC( null,null ,null ,false));
+				dispatch(setUserDataAC(null,null,null,false));
 			}
 		}
 
