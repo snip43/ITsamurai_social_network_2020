@@ -7,12 +7,12 @@ const SET_ABOUT_ME = 'SET_ABOUT_ME';
 const SET_IS_LOOKING_FOR_JOB = 'SET_IS_LOOKING_FOR_JOB';
 const SET_LOOKING_FOR_JOB_DESCRIPTION = 'SET_LOOKING_FOR_JOB_DESCRIPTION';
 const SET_STATUS = 'SET_STATUS';
-const UPDATE_STATUS = 'UPDATE_STATUS';
+const SET_LIKE = 'SET_LIKE'
 
 let initinalState = {
 	postsData:[
-		{id:1, value:'Первое',likeCount:20},
-		{id:2, value:'Двадцать пятое', likeCount:1}
+		{id:1, value:'Первое',likeCount:0},
+		{id:2, value:'Двадцать пятое', likeCount:0}
 	],
 	profileData: 
 		{
@@ -30,12 +30,12 @@ let initinalState = {
 				large: 'test',
 				small: 'test'
 			},
-		isLookingForJob: false,
+		isLookingForJob: true,
 		lookingForJobDescription: 'test',
-		fullName: 'test test',
+		fullName: 'Роман Костин',
 		userId: 5084,
 		aboutMe: 'test',
-		status: ''
+		status: 'в поисках работы'
 		}
 
 }
@@ -106,6 +106,27 @@ const profileReducer = (state = initinalState,action) => {
 					}
 				}
 
+			case SET_LIKE: 
+			
+				const stateCopy = {...state}
+				stateCopy.postsData = [...state.postsData]
+
+					let index = stateCopy.postsData.findIndex(elem=>elem.id === action.userId);
+					let newItem = stateCopy.postsData[index];
+
+					newItem.likeCount = newItem.likeCount+1;
+
+					stateCopy.postsData = [...stateCopy.postsData.slice(0, index), newItem, ...stateCopy.postsData.slice(index+1)];
+					return stateCopy;
+
+					// 	if(action.userId === id) {
+					// 		return {
+					// 			...state,
+					// 			postsData: [...state.postsData,
+					// 				{...state,likeCount: newLikeCount}]
+					// 		}
+					// } else return state;
+					
 			default:
 				return state;
 			}
@@ -118,8 +139,7 @@ export const setAboutMe = (aboutMe) => ({ type: SET_ABOUT_ME, aboutMe });
 export const setIsLookingForJob = (isLookingForJob) => ({ type: SET_IS_LOOKING_FOR_JOB,isLookingForJob });
 export const setLookingForJobDescription = (description) => ({ type: SET_LOOKING_FOR_JOB_DESCRIPTION, description });
 export const setStatus = (status) => ({type: SET_STATUS, status});
-export const updateStatus = (status) => ({type:UPDATE_STATUS,status})
-
+export const setLike = (userId) => ({type: SET_LIKE, userId})
 
 export const profileInfo = (userId) => async(dispatch) => {
 	let data = await	usersAPI.getProfileInfo(userId)	;
@@ -141,5 +161,10 @@ export const updateProfileStatus = (status) => async(dispatch) => {
 				dispatch(setStatus(status))
 			}
 		}
-		
+
+// 	export const updateLikeCount = (userId,likeCount) => (dispatch) => {
+// 			dispatch(setLike(userId,likeCount))
+// }
+
+
 export default profileReducer;

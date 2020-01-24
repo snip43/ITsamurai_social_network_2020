@@ -9,13 +9,13 @@ import { getProfile, getIsAuth } from '../../assets/profile-selectors';
 class ProfileInfoContainer extends Component {
 
 componentDidMount(){
-	 let userId = this.props.match.params.userId;
-	 if(!userId) {
+	let userId = this.props.match.params.userId;
+	if(!userId) {
 		userId = this.props.profile.userId;
 		if(!userId) {
 			this.props.history.push('/login');
 		} 
-	 }
+	}
 	this.props.profileInfo(userId);
 	this.props.profileStatus(userId);
 }
@@ -34,13 +34,7 @@ componentDidMount(){
 							/>
 	}
 }
-   
-// const mapStateToProps = (state)=> {
-// 	return {
-// 		profile: state.profilePage.profileData,
-// 		isAuth: state.authLogin.data.isAuth
-// 	}
-// }
+
 const mapStateToProps = (state)=> {
 	return {
 		profile: getProfile(state),

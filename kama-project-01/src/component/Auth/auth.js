@@ -5,14 +5,6 @@ import './auth.css'
 
 export default class Auth extends Component {
 
-	componentDidUpdate(){
-		console.log(this.props)
-	}
-
-	// shouldComponentUpdate(nextState) {
-	// 	return nextState !== this.state;
-	// }
-
 	render(){
 
 	const {isAuth,login,logout} = this.props;

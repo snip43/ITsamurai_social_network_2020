@@ -10,13 +10,8 @@ const ProfileInfo = (props) => {
 	// if(!props.large || !props.name) {
 	// 	return <Preloader />
 	// }
-const isLook = () => {
-	if(props.isLookingForJob) {
-		return 'Ищу'
-	} else {
-		return 'Не ищу'
-	}
-}	
+const isLook = () =>  props.isLookingForJob ? 'Ищу' : 'Не ищу' 
+	
 
 
 	return (

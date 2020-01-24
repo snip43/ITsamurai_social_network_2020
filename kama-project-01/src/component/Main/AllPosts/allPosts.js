@@ -5,7 +5,9 @@ import Post from './Post'
 const AllPosts = (props) => {
 
 	let newPost = props.postsData.map( (p,index) => (
+
 		<Post 
+			updateLikeCount = { props.setLike }
 			value={p.value} 
 			likeCount ={p.likeCount} 
 			id={p.id} 

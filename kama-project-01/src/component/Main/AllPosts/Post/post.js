@@ -3,7 +3,11 @@ import React from 'react';
 import './post.css'
 
 const Post = (props) => {
-	
+
+	const updateCount = () => {
+			props.updateLikeCount(props.id)
+	}
+
 	return (
 	<div className='post_1 border border-dark p-2 my-2 rounded w-100 text-left'>
 		<img 
@@ -12,8 +16,10 @@ const Post = (props) => {
 			className='postAvatar mr-3'/>
 			{props.value}
 			<div >
-				<button className='btn btn-sm btn-info p-1 mt-2'>	like 
-					<span className="badge badge-light ml-2">{props.likeCount}</span>
+				<button className='btn btn-sm btn-info p-1 mt-2'
+								onClick = { updateCount }>
+								like:
+						<span className="badge badge-light ml-2"> {props.likeCount}</span>
 				</button>	
 				
 				</div>
