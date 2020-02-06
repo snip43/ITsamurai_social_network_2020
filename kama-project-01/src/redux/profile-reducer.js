@@ -8,6 +8,8 @@ const SET_IS_LOOKING_FOR_JOB = 'SET_IS_LOOKING_FOR_JOB';
 const SET_LOOKING_FOR_JOB_DESCRIPTION = 'SET_LOOKING_FOR_JOB_DESCRIPTION';
 const SET_STATUS = 'SET_STATUS';
 const SET_LIKE = 'SET_LIKE'
+const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS'
+
 
 let initinalState = {
 	postsData:[
@@ -27,8 +29,8 @@ let initinalState = {
 				mainLink:'test'
 			},
 		photos: {
-				large: 'test',
-				small: 'test'
+				large: null,
+				small: null
 			},
 		isLookingForJob: true,
 		lookingForJobDescription: 'test',
@@ -119,14 +121,12 @@ const profileReducer = (state = initinalState,action) => {
 					stateCopy.postsData = [...stateCopy.postsData.slice(0, index), newItem, ...stateCopy.postsData.slice(index+1)];
 					return stateCopy;
 
-					// 	if(action.userId === id) {
-					// 		return {
-					// 			...state,
-					// 			postsData: [...state.postsData,
-					// 				{...state,likeCount: newLikeCount}]
-					// 		}
-					// } else return state;
-					
+					case SAVE_PHOTO_SUCCESS:
+						return {
+							...state,
+							profileData: {...state.profileData, photos: action.photos}
+							}
+
 			default:
 				return state;
 			}
@@ -140,6 +140,7 @@ export const setIsLookingForJob = (isLookingForJob) => ({ type: SET_IS_LOOKING_F
 export const setLookingForJobDescription = (description) => ({ type: SET_LOOKING_FOR_JOB_DESCRIPTION, description });
 export const setStatus = (status) => ({type: SET_STATUS, status});
 export const setLike = (userId) => ({type: SET_LIKE, userId})
+export const savePhotoSuccess = (photos) => ({type:SAVE_PHOTO_SUCCESS,photos})
 
 export const profileInfo = (userId) => async(dispatch) => {
 	let data = await	usersAPI.getProfileInfo(userId)	;
@@ -160,11 +161,14 @@ export const updateProfileStatus = (status) => async(dispatch) => {
 			if(data.data.resultCode===0) {
 				dispatch(setStatus(status))
 			}
-		}
+}
+export const savePhoto = (file) => async(dispatch) => {
+	let data = await usersAPI.savePhoto(file);
 
-// 	export const updateLikeCount = (userId,likeCount) => (dispatch) => {
-// 			dispatch(setLike(userId,likeCount))
-// }
+			if(data.data.resultCode===0) {
+				dispatch(savePhotoSuccess(data.data.data.photos))
+			}
+}
 
 
 export default profileReducer;

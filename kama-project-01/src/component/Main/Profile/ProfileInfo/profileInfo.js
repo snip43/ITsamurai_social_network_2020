@@ -1,5 +1,6 @@
 import React from 'react';
-// import Preloader from '../../../Preloader'
+import Preloader from '../../../Preloader';
+import userPhoto from '../../../../assets/images/photoDefault.jpg'
 
 import './profileInfo.css';
 import MeStatusWithHooks from '../../../MeStatus/meStatusWithHooks';
@@ -7,19 +8,30 @@ import MeStatusWithHooks from '../../../MeStatus/meStatusWithHooks';
 
 const ProfileInfo = (props) => {
 
-	// if(!props.large || !props.name) {
-	// 	return <Preloader />
-	// }
+	if(!props.name) {
+		return <Preloader />
+	}
+
 const isLook = () =>  props.isLookingForJob ? 'Ищу' : 'Не ищу' 
+
+const onPictureSelected = (e) => {
+	if(e.target.files.length) {
+		props.savePhoto(e.target.files[0])
+	}
+	console.log(e.target.files.length)
+}
+
 	
-
-
 	return (
 
 				<div className='profile d-flex my-3'>
 						<div className='col-4 pl-0 mr-4'>
-							<img src={props.large} alt="foto" className='profile__foto'/>
+							<img src={props.large || userPhoto} alt="foto" className='profile__foto'/>
+							<div className='btn btn-sm'>
+								{props.isOwner && <input type={'file'} onChange={onPictureSelected} className={'w-50'}/> }
+							</div>
 						</div>
+						
 						<div className='profile__info d-flex flex-column text-left pt-3'>
 							<h4 className='mb-1'>{props.name}</h4>
 
