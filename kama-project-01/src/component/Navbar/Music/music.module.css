@@ -1,0 +1,46 @@
+fieldset legend {
+    color: green;
+    font-weight: bold;
+}
+
+input[type='text'] {
+    width: 50px;
+    text-align: center;
+}
+
+form fieldset div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+input[type='radio'] {
+    margin-left: 20px;
+}
+
+.line_dostavki label {
+    margin-left: 20px;
+}
+
+.form_totalCount {
+    margin-top: 30px;
+}
+
+.btnList {
+    justify-content: center;
+}
+
+input[type='button'] {
+    width: 50%;
+    height: 30px;
+    font-weight: bold;
+}
+
+.resetBtn {
+    color: orange;
+}
+
+.completeBtn {
+    color: green;
+    font-size: 1.1em;
+}

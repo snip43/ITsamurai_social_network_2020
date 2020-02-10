@@ -12,7 +12,7 @@ return (
 		<div className={`btn-group-vertical ${styles.sidebar_link}`}>
 				<NavLink to="/profile" className='btn btn-outline-light'>Profile</NavLink>
 				<NavLink to="/dialogs" className='btn btn-outline-light'>Dialogs</NavLink>
-				<NavLink to="/news" className='btn btn-outline-light'>News</NavLink>
+				<NavLink to="/news" className='btn btn-outline-light'>News(Счетчик на setState)</NavLink>
 				<NavLink to="/music" className='btn btn-outline-light'>Music</NavLink>
 				<NavLink to='/findusers' className='btn btn-outline-light mt-5'>FindUsers </NavLink>
 				<NavLink to="/settings" className='btn btn-outline-secondary mt-5'>Settings</NavLink>
