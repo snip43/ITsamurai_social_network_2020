@@ -2,6 +2,7 @@
     "name": "kama-project-01",
     "version": "0.1.0",
     "private": true,
+    "homepage": "https://snip43.github.io/ITsamurai_social_network_2020",
     "dependencies": {
         "@types/jest": "^25.1.2",
         "@types/node": "^13.7.0",
