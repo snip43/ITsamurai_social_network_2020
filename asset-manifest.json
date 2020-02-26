@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ITsamurai_social_network_2020/static/css/main.ca26e55e.chunk.css",
-    "main.js": "/ITsamurai_social_network_2020/static/js/main.44949fd4.chunk.js",
-    "main.js.map": "/ITsamurai_social_network_2020/static/js/main.44949fd4.chunk.js.map",
+    "main.js": "/ITsamurai_social_network_2020/static/js/main.b7ac759d.chunk.js",
+    "main.js.map": "/ITsamurai_social_network_2020/static/js/main.b7ac759d.chunk.js.map",
     "runtime-main.js": "/ITsamurai_social_network_2020/static/js/runtime-main.f1cb4e00.js",
     "runtime-main.js.map": "/ITsamurai_social_network_2020/static/js/runtime-main.f1cb4e00.js.map",
     "static/js/2.c4d70dd8.chunk.js": "/ITsamurai_social_network_2020/static/js/2.c4d70dd8.chunk.js",
     "static/js/2.c4d70dd8.chunk.js.map": "/ITsamurai_social_network_2020/static/js/2.c4d70dd8.chunk.js.map",
     "index.html": "/ITsamurai_social_network_2020/index.html",
-    "precache-manifest.b1c766cc585e6892210a1ef8a599d9dc.js": "/ITsamurai_social_network_2020/precache-manifest.b1c766cc585e6892210a1ef8a599d9dc.js",
+    "precache-manifest.a4ad36aa098cf703f156c16a44a49931.js": "/ITsamurai_social_network_2020/precache-manifest.a4ad36aa098cf703f156c16a44a49931.js",
     "service-worker.js": "/ITsamurai_social_network_2020/service-worker.js",
     "static/css/main.ca26e55e.chunk.css.map": "/ITsamurai_social_network_2020/static/css/main.ca26e55e.chunk.css.map",
     "static/media/photoDefault.jpg": "/ITsamurai_social_network_2020/static/media/photoDefault.ee86bb6d.jpg"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.f1cb4e00.js",
     "static/js/2.c4d70dd8.chunk.js",
     "static/css/main.ca26e55e.chunk.css",
-    "static/js/main.44949fd4.chunk.js"
+    "static/js/main.b7ac759d.chunk.js"
   ]
 }
