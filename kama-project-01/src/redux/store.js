@@ -3,8 +3,7 @@ import profileReducer from './profile-reducer';
 import dialogsReducer from './dialogs-reducer';
 import navbarReducer from './navbar-reducer';
 
-let store =  {
-	
+let store = {
 	_state: {
 		profilePage: {
 			postsData:[
@@ -39,10 +38,7 @@ let store =  {
 			]
 		}
 	},
-	_rerenderTree() {
-		console.log('state изменился!');
-	},
-
+	
 	getState() {
 		return this._state;
 	},

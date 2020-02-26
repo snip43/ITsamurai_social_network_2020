@@ -1,6 +1,5 @@
 import profileReducer,{addPostOnReduxForm} from "./profile-reducer";
-import React from 'react';
-import ReactDOM from 'react-dom'
+
 
 let state = {
 	postsData:[

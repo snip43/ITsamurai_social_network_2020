@@ -15,31 +15,31 @@ export const usersAPI = {
 				return response.data 
 			})
 	},
-	postFollow(id){
+	postFollow(id:number){
 		return	instance.post(`follow/${id}`,{})
 				.then(response => {
 					return response.data;
 				})
 	},
-	deleteFollow(id){
+	deleteFollow(id:number){
 		return	instance.delete(`follow/${id}`)
 				.then(response => {
 					return response.data;
 				})
 	},
-getProfileInfo(id) {
+getProfileInfo(id:number) {
 		return instance.get(`profile/${id}`)
 			.then( response=>{
 				return response.data;
 		})
 	},
-	getStatus(id) {
+	getStatus(id:number) {
 		return instance.get(`/profile/status/${id}`)
 		},
-	updateStatus(status) {
+	updateStatus(status:any) {
 		return instance.put(`/profile/status`, {status: status})
 		},
-	savePhoto(photoFile) {
+	savePhoto(photoFile:any) {
 		const formData = new FormData();
 		formData.append('image',photoFile)
 			return instance.put('/profile/photo',formData, {
@@ -57,7 +57,7 @@ export const authAPI = {
 			return response.data;
 		})
 	},
-	login(email,password,rememberMe = false,isAuth) {
+	login(email:string,password:string,rememberMe:boolean = false,isAuth:boolean) {
 		return instance.post(`/auth/login`, {email,password,rememberMe,isAuth})
 		},
 	logout(){

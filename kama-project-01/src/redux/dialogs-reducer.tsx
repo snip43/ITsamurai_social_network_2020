@@ -1,5 +1,13 @@
 const ADD_MESSAGE = 'ADD_MESSAGE';
 
+export type AddMessageType = {
+	type: typeof ADD_MESSAGE
+}
+
+export type InitinalStateType = typeof initinalState
+
+export type dialogsReducerTypes = InitinalStateType
+
 let initinalState = {
 	dialogData: [
 			{name:'Яна', id:'yana', avatar: 'https://pbs.twimg.com/media/DfcRcaNXUAAfkJa.jpg:large'},
@@ -7,16 +15,20 @@ let initinalState = {
 			{name:'Папа', id:'dady',avatar: 'https://avatars.mds.yandex.net/get-pdb/1209663/8956145b-908b-4a7e-a9fb-7c4e0c769289/s1200'},
 			{name:'Мелочь', id:'sister',avatar:'https://static.wallpapers-anime.com/upload/20170524/581/B/A/p/BApFEF.jpg'},
 			{name:'Димон', id:'dimon',avatar:'https://avatars.mds.yandex.net/get-pdb/1668445/2e27748d-4294-450d-9500-ee2f2b2b3428/s1200?webp=false'}
-		],	
+		] as Array<{name: string,id:string, avatar:string}>,	
 		messageData:[
 			{id:1, message: 'Жду! Борщ готов!'},
 			{id:2, message: 'Привет,сынуля! Работаешь?'},
 			{id:3, message: 'У меня отпуск в октябре,хочу приехать!'},
-		]
+		] as Array<{id:number, message:string}>
 	}
 
 
-const dialogsReducer = (state = initinalState,action) => {
+// export type NewMessageType = {
+// 	id:number
+// 	message:typeof textMessage
+// }
+const dialogsReducer = (state = initinalState,action:AddMessageTextType) => {
 	switch(action.type) {
 		case ADD_MESSAGE: 
 				let textMessage = action.newMessageText;
@@ -34,7 +46,12 @@ const dialogsReducer = (state = initinalState,action) => {
 	}
 }
 
-export const addMessageText = (newMessageText) => ({ type: ADD_MESSAGE,newMessageText });
+export type AddMessageTextType = {
+	type: typeof ADD_MESSAGE,
+	newMessageText:string
+}
+
+export const addMessageText = (newMessageText:string):AddMessageTextType => ({ type: ADD_MESSAGE,newMessageText });
 
 
 export default dialogsReducer;

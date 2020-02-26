@@ -1,25 +1,23 @@
 import {authAPI} from '../api/api'
-import {stopSubmit} from 'redux-form'
+import {stopSubmit} from 'redux-form';
+import {GET_USER_DATA,SetUserDataACType,ActionAuthLoginTypes,InitinalStateType} from '../types/auth-loginTypes'
 
-const GET_USER_DATA = 'GET_USER_DATA';
-
-const initinalState = {
+const initinalState: InitinalStateType = {
 	data: {
-		id: null,
+		userId: null,
 		email: null,
 		login: null,
 		isAuth: false
 	}
 }
 
-const authLoginReducer = (state = initinalState, action) => {
+const authLoginReducer = (state = initinalState, action:ActionAuthLoginTypes):InitinalStateType => {
 	switch(action.type) {
 		case GET_USER_DATA:
 			return {
 					...state,
 					data: { ...action.data,
 							isAuth: action.data.isAuth	}
-			
 				}
 					
 			default:
@@ -27,7 +25,7 @@ const authLoginReducer = (state = initinalState, action) => {
 	}
 }
 
-export const getAuthMe = () => async(dispatch) => {
+export const getAuthMe = () => async(dispatch:any) => {
 	let data = await authAPI.getAuthMe();
 			if(data.resultCode===0) {
 				const {id,email,login} = data.data;
@@ -35,7 +33,7 @@ export const getAuthMe = () => async(dispatch) => {
 			}
 		}
 
-export const login = (email,password,rememberMe,isAuth) => async(dispatch) => {
+export const login = (email:string,password:string,rememberMe:any,isAuth:boolean) => async(dispatch:any) => {
 		let data = await authAPI.login(email,password,rememberMe,isAuth);
 			if(data.data.resultCode===0) {
 				dispatch(getAuthMe())
@@ -45,13 +43,14 @@ export const login = (email,password,rememberMe,isAuth) => async(dispatch) => {
 			}
 		
 	} 
-export const logout = () => async(dispatch) => {
+export const logout = () => async(dispatch:any) => {
 		let data = await authAPI.logout();
 			if(data.data.resultCode===0) {
 				dispatch(setUserDataAC(null,null,null,false));
 			}
 		}
 
-export const setUserDataAC = (userId,email,login,isAuth) => ({type:GET_USER_DATA,data:{userId,email,login,isAuth}})
+export const setUserDataAC = (userId:number|null,email:string|null,login:string|null,isAuth:boolean):SetUserDataACType => 
+({type:GET_USER_DATA,data:{userId,email,login,isAuth}})
 
 export default authLoginReducer;

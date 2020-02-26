@@ -1,3 +1,6 @@
+
+export type initinalStateType = typeof initinalState;
+
 let initinalState = {
 	friendsData: [
 		{name:'Орех', id:'yana', avatar: 'https://pbs.twimg.com/media/DfcRcaNXUAAfkJa.jpg:large'},
@@ -8,7 +11,7 @@ let initinalState = {
 	]
 }
 
-const navbarReducer = (state = initinalState,action) => {
+const navbarReducer = (state = initinalState,action:any):initinalStateType => {
 	return state;
 }
 
