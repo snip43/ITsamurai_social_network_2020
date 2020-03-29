@@ -5,10 +5,8 @@ import {login} from '../../redux/auth_login-reducer';
 import {Redirect} from 'react-router-dom';
 import styles from './login.module.css';
 
-
-
 const Login = ({login,isAuth}) => {
-
+	
 const submit = formData => {
 	login(formData.email,formData.password,formData.rememberMe)
 }

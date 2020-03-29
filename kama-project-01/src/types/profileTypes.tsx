@@ -46,6 +46,7 @@ export type PhotosType = {
 	large: string|null
 	small: string|null
 }
+
 export type ProfileDataType = {
 	contacts: ContactsType
 	photos: PhotosType

@@ -1,18 +1,30 @@
-import React from 'react';
+import React,{FC} from 'react';
 import './user.css';
 import photoDefault from '../../assets/images/photoDefault.jpg';
 import {NavLink} from 'react-router-dom';
+import { PhotosType } from '../../types/profileTypes';
 
+type PropsType = {
+	photos: PhotosType['small'] | null
+	name: string
+	follow: boolean
+	followingInProgress: Array<number>
+	id: number
+	unFollow: () => void
+	onFollow: () => void
+	followMessage?: string
+	country?: string
+	city?: string
+}
 
-
-const User = ({avatar,name,follow,followingInProgress,id,unFollow,onFollow,followMessage,country,city,...props}) => {
+const User: FC<PropsType> = ({photos,name,follow,followingInProgress,id,unFollow,onFollow,followMessage,country,city,...props}) => {
 	return (
 		<div className='user d-flex mb-3 p-1'>
 		
 					<div className ='user_leftSide d-flex flex-column mr-3 align-items-center col-4'>
 								<NavLink to={`/profile/${id}`}>
 									<div className='user_avatar'>
-										<img src= {avatar != null ? avatar : photoDefault} alt={name}/>
+										<img src= {photos != null ? photos : photoDefault} alt={name}/>
 									</div>
 								</NavLink>
 								<p> {name}</p>

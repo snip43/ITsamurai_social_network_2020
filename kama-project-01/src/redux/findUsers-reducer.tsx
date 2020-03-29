@@ -10,10 +10,15 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
 const SET_TOTAL_PEOPLE = 'SET_TOTAL_PEOPLE';
 
 export type UserType = {
-	id:number,
-	name:string,
-	status:string|null,
-	photos:PhotosType,
+	id:number
+	name:string
+	status?:string|null
+	photos: PhotosType
+	followed: boolean
+	country?: string
+	followingInProgress: Array<number>
+	follow?: (id: number) => void
+	unfollow?: (id: number) => void
 }
 
 export type InitinalStateType = {

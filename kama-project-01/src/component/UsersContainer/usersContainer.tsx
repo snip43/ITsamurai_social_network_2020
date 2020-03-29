@@ -4,15 +4,30 @@ import {compose} from 'redux';
 
 import Paginator from '../Paginator';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
-class UsersContainer extends Component {
+import { getUsers, setCurrentPage, UserType } from '../../redux/findUsers-reducer';
 
+
+type PropsType = {
+	currentPage: number
+	pageSize: number
+	getUsers: typeof getUsers
+	setCurrentPage: typeof setCurrentPage
+	totalPeople: number
+
+	usersData: Array<UserType>
+	followingInProgress: Array<number>
+
+	follow: (id: number) => void
+	unfollow: (id:number) => void
+}
+
+class UsersContainer extends Component<PropsType> {
 componentDidMount(){
-
 	const{currentPage,pageSize,getUsers} = this.props;
 	getUsers(currentPage, pageSize);	
 }
 
-onPageChanged =(pageNumber) => {
+onPageChanged =(pageNumber:number) => {
 	const {setCurrentPage,getUsers,pageSize} = this.props;
 	setCurrentPage(pageNumber);
 	getUsers(pageNumber,pageSize);
@@ -33,7 +48,7 @@ render(){
 									id={u.id}
 									key={u.id}
 									name={u.name}
-									avatar={u.photos.small}
+									photos={u.photos.small}
 									follow={u.followed}
 									followingInProgress={followingInProgress}
 
