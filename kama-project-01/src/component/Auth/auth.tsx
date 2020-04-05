@@ -3,7 +3,15 @@ import {NavLink} from 'react-router-dom';
 
 import './auth.css'
 
-export default class Auth extends Component {
+type PropsType = {
+	isAuth: boolean
+	login: string|null
+	email: string|null
+	logout: () => void
+	
+}
+
+export default class Auth extends Component<PropsType> {
 
 	render(){
 

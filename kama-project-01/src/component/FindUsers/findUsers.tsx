@@ -1,11 +1,12 @@
 import UsersContainer from '../UsersContainer';
-import {connect} from 'react-redux';
+import {connect, ConnectedProps} from 'react-redux';
 import {compose} from 'redux'
 
 import {follow,	unfollow,	toggleIsFetching,getUsers,setCurrentPage} from '../../redux/findUsers-reducer';
+import { StateReducers } from '../../redux/redux-store';
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: StateReducers) => {
 
 	return {
 		usersData: state.findUsersPage.usersData,
@@ -26,10 +27,15 @@ const mapDispatchToProps =  {
 		unfollow,
 		}
 
+const connector = connect(mapStateToProps,mapDispatchToProps);
 
-const FindUsers = compose (
-	connect(mapStateToProps,mapDispatchToProps)
-	)(UsersContainer);
+type PropsFindUsers = ConnectedProps<typeof connector>
+
+// const FindUsers = compose ( 
+// 	connect(mapStateToProps,mapDispatchToProps)
+// 	)(UsersContainer);
+
+const FindUsers = connector(UsersContainer);
 
 
 export default FindUsers;

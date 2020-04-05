@@ -4,7 +4,8 @@ import {compose} from 'redux';
 
 import Paginator from '../Paginator';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
-import { getUsers, setCurrentPage, UserType } from '../../redux/findUsers-reducer';
+import { getUsers, setCurrentPage } from '../../redux/findUsers-reducer';
+import { UserType } from '../../types/findUsersTypes';
 
 
 type PropsType = {

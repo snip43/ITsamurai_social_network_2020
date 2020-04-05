@@ -21,9 +21,11 @@ export type SetUserDataACType = {
 	data: SetUserDataACDataType
 }
 
-export type ActionAuthLoginTypes = SetUserDataACType;
-
 export type GetUserDataType = {
 	type: typeof GET_USER_DATA;
 }
+
+export type ActionAuthLoginTypes = SetUserDataACType;
+
+
 
