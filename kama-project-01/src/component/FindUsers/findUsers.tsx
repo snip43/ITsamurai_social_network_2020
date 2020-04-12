@@ -1,7 +1,5 @@
 import UsersContainer from '../UsersContainer';
 import {connect, ConnectedProps} from 'react-redux';
-import {compose} from 'redux'
-
 import {follow,	unfollow,	toggleIsFetching,getUsers,setCurrentPage} from '../../redux/findUsers-reducer';
 import { StateReducers } from '../../redux/redux-store';
 

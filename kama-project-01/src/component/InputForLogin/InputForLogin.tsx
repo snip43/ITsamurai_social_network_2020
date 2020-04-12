@@ -1,7 +1,21 @@
-import React from 'react';
+import React, {FC} from 'react';
 import styles from './InputForLogin.module.css'
 
-export const InputForLogin = ({input,label,placeholder,type,meta: { touched, error, warning } }) => {
+type MetaType = {
+	touched:string
+	error: string
+	warning: string
+}
+
+type PropsType = {
+	input: string
+	label: string
+	placeholder: string
+	type: string
+	meta: MetaType
+}
+
+const InputForLogin: FC<PropsType> = ({input,label,placeholder,type,meta: { touched, error, warning } }) => {
 
 	return <div className={styles.formControl}>
 			<label>{label}</label>
@@ -15,3 +29,4 @@ export const InputForLogin = ({input,label,placeholder,type,meta: { touched, err
 	
 }
 
+export default InputForLogin;

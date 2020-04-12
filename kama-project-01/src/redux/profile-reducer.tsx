@@ -1,20 +1,9 @@
 import {usersAPI} from '../api/api';
-import { InitinalStateType, PhotosType, initinalState } from '../types/profileTypes';
+import { InitinalStateType, initinalState, PhotosType } from '../types/profileTypes';
+import { AddPostOnReduxFormType, SetPhotosLargeProfileType, SetAboutMeType, SetIsLookingForJobType, SetLookingForJobDescriptionType, SetStatusType, SetLikeType, ProfileReducersActionTypes, ADD_POST, SET_NEW_NAME_PROFILE, SET_ABOUT_ME, SET_LOOKING_FOR_JOB_DESCRIPTION, SET_IS_LOOKING_FOR_JOB, SET_STATUS, SET_LIKE, SAVE_PHOTO_SUCCESS, SET_PHOTOS } from '../types/profileReducerTypes';
 
-const ADD_POST = 'ADD-POST';
-const SET_PHOTOS = 'SET_PHOTOS';
-const SET_NEW_NAME_PROFILE = 'SET_NEW_NAME_PROFILE';
-const SET_ABOUT_ME = 'SET_ABOUT_ME';
-const SET_IS_LOOKING_FOR_JOB = 'SET_IS_LOOKING_FOR_JOB';
-const SET_LOOKING_FOR_JOB_DESCRIPTION = 'SET_LOOKING_FOR_JOB_DESCRIPTION';
-const SET_STATUS = 'SET_STATUS';
-const SET_LIKE = 'SET_LIKE'
-const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS'
+const profileReducer = (state = initinalState,action: ProfileReducersActionTypes):InitinalStateType => {
 
-
-// export type ActionTypes = Add_PostType|SetPhotoType|SetNewNameProfileType|SetAboutMeType|SetIsLookingForJobType|SetLookingForJobDescriptionType|SetStatusType|SetLikeType|SavePhotoSuccessType
-
-const profileReducer = (state = initinalState,action:any):InitinalStateType => {
 	switch(action.type) {
 		case ADD_POST: 
 			let postText = action.newPostText;
@@ -29,7 +18,7 @@ const profileReducer = (state = initinalState,action:any):InitinalStateType => {
 				}
 					
 
-		case SET_PHOTOS: 
+		case "SET_PHOTOS": 
 		return {
 			
 			...state,
@@ -93,7 +82,7 @@ const profileReducer = (state = initinalState,action:any):InitinalStateType => {
 					stateCopy.postsData = [...stateCopy.postsData.slice(0, index), newItem, ...stateCopy.postsData.slice(index+1)];
 					return stateCopy;
 
-					case SAVE_PHOTO_SUCCESS:
+			case SAVE_PHOTO_SUCCESS:
 						return {
 							...state,
 							profileData: {...state.profileData, photos: action.photos}
@@ -104,60 +93,15 @@ const profileReducer = (state = initinalState,action:any):InitinalStateType => {
 			}
 }
 
-export type AddPostOnReduxFormType = {
-	type: typeof ADD_POST
-	newPostText:string|null
-}
 export const addPostOnReduxForm = (newPostText:string|null):AddPostOnReduxFormType => ({ type: ADD_POST, newPostText });
-
-export type SetPhotosLargeProfileType = {
-	type: typeof SET_PHOTOS
-	large:string|null
-}
 export const setPhotosLargeProfile = (large:string|null):SetPhotosLargeProfileType => ({ type: SET_PHOTOS, large });
-
-export type SetNameNewProfileType={
-	type: typeof SET_NEW_NAME_PROFILE
-	fullName:string|null
-}
 export const setNameNewProfile = (fullName:string) => ({ type: SET_NEW_NAME_PROFILE, fullName });
-
-export type SetAboutMeType = {
-	type:typeof SET_ABOUT_ME
-	aboutMe:string|null
-}
 export const setAboutMe = (aboutMe:string|null):SetAboutMeType => ({ type: SET_ABOUT_ME, aboutMe });
-
-export type SetIsLookingForJobType = {
-	type:typeof SET_IS_LOOKING_FOR_JOB
-	isLookingForJob:boolean
-}
 export const setIsLookingForJob = (isLookingForJob:boolean):SetIsLookingForJobType => ({ type: SET_IS_LOOKING_FOR_JOB,isLookingForJob });
-
-export type SetLookingForJobDescriptionType = {
-	type:typeof SET_LOOKING_FOR_JOB_DESCRIPTION
-	description:string|null
-}
 export const setLookingForJobDescription = (description:string|null):SetLookingForJobDescriptionType => ({ type: SET_LOOKING_FOR_JOB_DESCRIPTION, description });
-
-export type SetStatusType = {
-	type: typeof SET_STATUS
-	status:string|null
-}
 export const setStatus = (status:string|null):SetStatusType => ({type: SET_STATUS, status});
-
-export type SetLikeType = {
-	type: typeof SET_LIKE
-	userId:number
-}
 export const setLike = (userId:number):SetLikeType => ({type: SET_LIKE, userId})
-
-export type SavePhotoSuccessType = {
-	type: typeof SAVE_PHOTO_SUCCESS
-	photos: PhotosType
-}
 export const savePhotoSuccess = (photos:PhotosType) => ({type:SAVE_PHOTO_SUCCESS,photos})
-
 
 export const profileInfo = (userId:number) => async(dispatch:any) => {
 	let data = await	usersAPI.getProfileInfo(userId)	;

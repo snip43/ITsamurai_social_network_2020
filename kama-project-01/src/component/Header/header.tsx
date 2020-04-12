@@ -1,9 +1,10 @@
-import React from 'react';
+import React,{ FC } from 'react';
 import AuthContainer from '../AuthContainer/AuthContainer'
 import styles from './header.module.css';
 
+type PropsType = {}
 
-const Header = () => {
+const Header: FC<PropsType> = () => {
 	return (
 	<div className={styles.header}>
 			<div className = {styles.header_logo_login}>

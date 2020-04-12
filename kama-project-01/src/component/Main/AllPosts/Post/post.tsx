@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import './post.css'
+import { SetLikeType } from '../../../../types/profileReducerTypes';
 
-const Post = (props) => {
+type PropsType = {
+	updateLikeCount: any
+	id: number
+	value: string
+	likeCount: number
+}
+
+const Post: FC<PropsType> = (props) => {
 
 	const updateCount = () => {
 			props.updateLikeCount(props.id)

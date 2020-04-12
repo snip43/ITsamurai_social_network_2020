@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import Post from './Post'
+import { SetLikeType } from '../../../types/profileReducerTypes';
 
-const AllPosts = (props) => {
+type PropsType = {
+	postsData: Array<{ id:number, value:string, likeCount:number}>
+	setLike: SetLikeType
+	updateLikeCount: any
+}
+
+const AllPosts: FC<PropsType> = (props) => {
 
 	let newPost = props.postsData.map( (p,index) => (
 
