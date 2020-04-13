@@ -1,36 +1,10 @@
-export let initinalState = {
-	postsData:[
-		{id:1, value:'Первое',likeCount:0},
-		{id:2, value:'Двадцать пятое', likeCount:0}
-	] as Array<{id:number,value:string|null,likeCount:number}>,
-	profileData: 
-		{
-		contacts: {
-				facebook: 'test' as string,
-				website:'test' as string,
-				vk:'test' as string,
-				twitter:'test' as string,
-				instagram:'test' as string,
-				youtube:'test' as string,
-				github:'test' as string,
-				mainLink:'test' as string
-			},
-		photos: {
-				large: null as string | null | undefined,
-				small: null as string | null 
-			},
-		isLookingForJob: true as boolean,
-		lookingForJobDescription: 'test' as string | null,
-		fullName: 'Роман Костин' as string | null,
-		userId: 5084 as number | null,
-		aboutMe: 'test' as string | null,
-		status: 'в поисках работы' as string | null
-		}
+interface initinalState {
 
+	postsData: PostsDataType,
+	profileData: ProfileDataType
 }
 
-
-export type InitinalStateType = typeof initinalState
+export type PostsDataType = Array <{ id:number, value:string, likeCount:number }>
 
 export type ContactsType = {
 	facebook: string|null,
@@ -44,13 +18,68 @@ export type ContactsType = {
 }
 
 export type PhotosType = {
-	large: string | null
-	small: string | null
+	large: string
+	small: string
 }
 
-export type ProfileDataType = {
-	contacts: ContactsType
-	photos: PhotosType
+export type ProfileDataType = 	{
+		contacts: {
+				facebook: 'test' ,
+				vk:'test',
+				twitter:'test',
+				instagram:'inst',
+				skype: 'skyp',
+				icq: 'icque',
+				email: 'emal',
+				googlePlus: 'googlePl',
+				whatsApp: 'watsap'
+			},
+		// photos: {
+		// 		large: null,
+		// 		small: null 
+		// 	},
+		isLookingForAJob: true ,
+		lookingForAJobDescription: 'test',
+		fullName: 'Роман Костин',
+		userId: 5084 ,
+		aboutMe: 'test' ,
+		// status: 'в поисках работы'
+		}
+
+
+export let initinalState = {
+	postsData:[
+		{id:1, value:'Первое',likeCount:0},
+		{id:2, value:'Двадцать пятое', likeCount:0}
+	] ,
+		profileData: 
+		{
+		contacts: {
+				facebook: 'test' ,
+				vk:'test',
+				twitter:'test',
+				instagram:'inst',
+				skype: 'skyp',
+				icq: 'icque',
+				email: 'emal',
+				googlePlus: 'googlePl',
+				whatsApp: 'watsap'
+			},
+		// photos: {
+		// 		large: null,
+		// 		small: null 
+		// 	},
+		isLookingForAJob: true ,
+		lookingForAJobDescription: 'test',
+		fullName: 'Роман Костин',
+		userId: 5084 ,
+		aboutMe: 'test' ,
+		// status: 'в поисках работы'
+		}
 }
+
+export type InitinalStateType = typeof initinalState
+
+
 
 

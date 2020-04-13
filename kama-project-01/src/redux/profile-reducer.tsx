@@ -1,6 +1,9 @@
 import {usersAPI} from '../api/api';
 import { InitinalStateType, initinalState, PhotosType } from '../types/profileTypes';
 import { AddPostOnReduxFormType, SetPhotosLargeProfileType, SetAboutMeType, SetIsLookingForJobType, SetLookingForJobDescriptionType, SetStatusType, SetLikeType, ProfileReducersActionTypes, ADD_POST, SET_NEW_NAME_PROFILE, SET_ABOUT_ME, SET_LOOKING_FOR_JOB_DESCRIPTION, SET_IS_LOOKING_FOR_JOB, SET_STATUS, SET_LIKE, SAVE_PHOTO_SUCCESS, SET_PHOTOS } from '../types/profileReducerTypes';
+import { Dispatch } from 'redux';
+
+
 
 const profileReducer = (state = initinalState,action: ProfileReducersActionTypes):InitinalStateType => {
 
@@ -118,13 +121,13 @@ export const profileStatus = (userId:number) => async(dispatch:any) => {
 	dispatch(setStatus((await data).data))
 }
 
-export const updateProfileStatus = (status:string|null) => async(dispatch:any) => {
+export const updateProfileStatus = (status:string|null) => async(dispatch:Dispatch<>) => {
 	let data = await usersAPI.updateStatus(status);
 			if(data.data.resultCode===0) {
 				dispatch(setStatus(status))
 			}
 }
-export const savePhoto = (file:string) => async(dispatch:any) => {
+export const savePhoto = (file:string) => async(dispatch:Dispatch<savePhoto>) => {
 	let data = await usersAPI.savePhoto(file);
 
 			if(data.data.resultCode===0) {

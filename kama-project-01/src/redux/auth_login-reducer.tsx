@@ -1,4 +1,4 @@
-import {authAPI} from '../api/api'
+import { authAPI, ResultCodesEnum } from '../api/api';
 import {stopSubmit} from 'redux-form';
 import {GET_USER_DATA,SetUserDataACType,ActionAuthLoginTypes,InitinalStateType} from '../types/auth-loginTypes'
 
@@ -27,7 +27,7 @@ const authLoginReducer = (state = initinalState, action:ActionAuthLoginTypes):In
 
 export const getAuthMe = () => async(dispatch:any) => {
 	let data = await authAPI.getAuthMe();
-			if(data.resultCode===0) {
+			if(data.resultCode === ResultCodesEnum.Success) {
 				const {id,email,login} = data.data;
 				dispatch(setUserDataAC(id,email,login,true))
 			}
@@ -35,7 +35,7 @@ export const getAuthMe = () => async(dispatch:any) => {
 
 export const login = (email:string,password:string,rememberMe:any,isAuth:boolean) => async(dispatch:any) => {
 		let data = await authAPI.login(email,password,rememberMe,isAuth);
-			if(data.data.resultCode===0) {
+			if(data.data.resultCode === ResultCodesEnum.Success) {
 				dispatch(getAuthMe())
 			} else {
 				let message = data.data.messages.length > 0 ? data.data.messages[0]: 'Some Error';
@@ -45,7 +45,7 @@ export const login = (email:string,password:string,rememberMe:any,isAuth:boolean
 	} 
 export const logout = () => async(dispatch:any) => {
 		let data = await authAPI.logout();
-			if(data.data.resultCode===0) {
+			if(data.data.resultCode === ResultCodesEnum.Success) {
 				dispatch(setUserDataAC(null,null,null,false));
 			}
 		}

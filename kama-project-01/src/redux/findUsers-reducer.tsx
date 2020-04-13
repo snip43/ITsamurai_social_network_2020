@@ -1,6 +1,11 @@
 import {usersAPI} from '../api/api';
 
-import { InitinalStateType, UserType, FOLLOW, UNFOLLOW, SET_USERS, SET_CURRENT_PAGE, TOGGLE_IS_FETCHING, SET_TOTAL_PEOPLE, TOGGLE_IS_FOLLOWING_PROGRESS, onFollowActionType, unFollowActionType, SetUsersActionType, SetCurrentPageActionType, ToggleIsFetchingActionType, ToggleIsFollowingProgressActionType, SetTotalPeopleActionType, FindUsersTypes } from '../types/findUsersTypes';
+import { InitinalStateType, UserType, FOLLOW, UNFOLLOW, SET_USERS, SET_CURRENT_PAGE, TOGGLE_IS_FETCHING, SET_TOTAL_PEOPLE, TOGGLE_IS_FOLLOWING_PROGRESS, onFollowActionType, unFollowActionType, SetUsersActionType, SetCurrentPageActionType, ToggleIsFetchingActionType, ToggleIsFollowingProgressActionType, SetTotalPeopleActionType, FindUsersActionTypes, ActionCreatorToThunkType } from '../types/findUsersTypes';
+import { Dispatch } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+import { AppStateType } from './redux-store';
+
+type DispatchType = Dispatch<FindUsersActionTypes>;
 
 let initinalState = {
 	usersData:[] as Array<UserType>,
@@ -13,7 +18,7 @@ let initinalState = {
 }
 
 
-const findUsersReducers = (state = initinalState,action:FindUsersTypes):InitinalStateType => {
+const findUsersReducers = (state = initinalState,action:FindUsersActionTypes):InitinalStateType => {
 	switch(action.type) {
 		case FOLLOW : 
 				return {
@@ -77,7 +82,6 @@ const findUsersReducers = (state = initinalState,action:FindUsersTypes):Initinal
 	}
 }
 
-
 export const onFollow = (userId:number):onFollowActionType => ({ type: FOLLOW, userId });
 export const unFollow = (userId:number):unFollowActionType => ({ type: UNFOLLOW, userId });
 export const setUsers = (usersData:Array<UserType>):SetUsersActionType => ({ type: SET_USERS,usersData });
@@ -86,15 +90,22 @@ export const toggleIsFetching = (isFetching:boolean):ToggleIsFetchingActionType 
 export const toggleIsFollowingProgress = (isFetching:boolean,id:number):ToggleIsFollowingProgressActionType => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS,isFetching,id });
 export const setTotalPeople = (totalPeople:number):SetTotalPeopleActionType => ({ type: SET_TOTAL_PEOPLE,totalPeople });
 
-export const getUsers = (currentPage:number,pageSize:number) => async(dispatch:any) => {
-	dispatch(toggleIsFetching(true));
-	let data = await usersAPI.getUsersApi(currentPage, pageSize);
-				dispatch(toggleIsFetching(false));
-				dispatch(setUsers(data.items));
-				dispatch(setTotalPeople(data.totalCount));
-	}
+type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, FindUsersActionTypes>
 
-	const followUnfollowFlow = async (dispatch:any,userId:number,apiMethod:any,actionCreator:any) => {
+
+export const getUsers = (currentPage:number,pageSize:number): ThunkType => {
+	return async(dispatch) => {
+		dispatch(toggleIsFetching(true));
+		dispatch(setCurrentPage(currentPage));
+
+		let data = await usersAPI.getUsersApi(currentPage, pageSize);
+					dispatch(toggleIsFetching(false));
+					dispatch(setUsers(data.items));
+					dispatch(setTotalPeople(data.totalCount));
+		}
+}
+
+	const _followUnfollowFlow = async (dispatch:DispatchType,userId:number,apiMethod:any,actionCreator:ActionCreatorToThunkType ) => {
 		dispatch(toggleIsFollowingProgress(true,userId));
 		let data = await apiMethod(userId)
 		if(data.resultCode ===0 ){
@@ -103,12 +114,16 @@ export const getUsers = (currentPage:number,pageSize:number) => async(dispatch:a
 				}
 			}
 
-export const follow = (userId:number) => async(dispatch:any) => {
-	followUnfollowFlow(dispatch,userId,usersAPI.postFollow,onFollow);
-		}
+export const follow = (userId:number): ThunkType => {
+	return async(dispatch) => {
+		_followUnfollowFlow(dispatch,userId,usersAPI.postFollow,onFollow);
+			}
+}
 
-export const unfollow = (userId:number) => async(dispatch:any) => {
-	followUnfollowFlow(dispatch,userId,usersAPI.deleteFollow,unFollow);
+export const unfollow = (userId:number): ThunkType => {
+	return async(dispatch) => {
+		_followUnfollowFlow(dispatch,userId,usersAPI.deleteFollow,unFollow);
+	}
 }
 
 export default findUsersReducers;

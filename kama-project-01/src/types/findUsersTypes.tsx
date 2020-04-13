@@ -14,10 +14,10 @@ export type UserType = {
 	status?:string|null
 	photos: PhotosType
 	followed: boolean
-	country?: string
-	followingInProgress: Array<number>
-	follow?: (id: number) => void
-	unfollow?: (id: number) => void
+	// country?: string
+	// followingInProgress: Array<number>
+	// follow?: (id: number) => void
+	// unfollow?: (id: number) => void
 }
 
 export type InitinalStateType = {
@@ -66,7 +66,10 @@ export type SetTotalPeopleActionType = {
 	totalPeople: number
 }
 
-export type FindUsersTypes = onFollowActionType & unFollowActionType & SetUsersActionType & SetCurrentPageActionType & ToggleIsFetchingActionType & ToggleIsFollowingProgressActionType & SetTotalPeopleActionType;
+export type FollowUnfollowType = onFollowActionType | unFollowActionType
+export type ActionCreatorToThunkType = (userId:number) => FollowUnfollowType
+
+export type FindUsersActionTypes = onFollowActionType | unFollowActionType | SetUsersActionType | SetCurrentPageActionType | ToggleIsFetchingActionType | ToggleIsFollowingProgressActionType | SetTotalPeopleActionType;
 
 
 

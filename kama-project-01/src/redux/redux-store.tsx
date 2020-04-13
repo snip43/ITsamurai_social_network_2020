@@ -8,7 +8,7 @@ import thunkMiddleware from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form'
 import appReducer from './app-reducer';
 
-let reducers = combineReducers({
+let rootReducer = combineReducers({
 	profilePage: profileReducer, 
 	dialogsPage: dialogsReducer, 
 	navbarPage: navbarReducer,
@@ -18,8 +18,13 @@ let reducers = combineReducers({
 	app: appReducer
 });
 
-export type StateReducers = ReturnType <typeof reducers>
+export type AppStateType = ReturnType<typeof rootReducer>
 
-let store = createStore(reducers,applyMiddleware(thunkMiddleware));
-// window.store = store;
-export default store;
+// @ts-ignore
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose ;
+
+const store = createStore(rootReducer,composeEnhancers(applyMiddleware(thunkMiddleware)));
+
+// @ts-ignore
+window.__store__ = store
+// export default store;

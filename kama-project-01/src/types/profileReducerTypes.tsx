@@ -1,4 +1,4 @@
-import { PhotosType } from './profileTypes';
+// import { PhotosType } from './profileTypes';
 
 export const ADD_POST = 'ADD_POST';
 export const SET_PHOTOS = 'SET_PHOTOS';
@@ -12,7 +12,7 @@ export const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS'
 
 export type AddPostOnReduxFormType = {
 	type: typeof ADD_POST
-	newPostText:string|null
+	newPostText:string | null
 }
 
 export type SetPhotosLargeProfileType = {
@@ -53,8 +53,8 @@ export type SetLikeType = {
 
 export type SavePhotoSuccessType = {
 	type: typeof SAVE_PHOTO_SUCCESS
-	photos: PhotosType
+	photos: string
 }
 
-export type ProfileReducersActionTypes = AddPostOnReduxFormType & SetPhotosLargeProfileType & SetNameNewProfileType & SetAboutMeType & SetIsLookingForJobType & SetLookingForJobDescriptionType & SetStatusType & SetLikeType & SavePhotoSuccessType
+export type ProfileReducersActionTypes = AddPostOnReduxFormType & SetPhotosLargeProfileType & SetNameNewProfileType & SetAboutMeType & SetIsLookingForJobType & SetLookingForJobDescriptionType & SetStatusType & SetLikeType & SavePhotoSuccessType;
 
