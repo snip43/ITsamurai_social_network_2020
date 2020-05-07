@@ -1,10 +1,15 @@
-interface initinalState {
+// export type InitinalStateType = {
+// 	postsData: PostsDataType,
+// 	profileData: ProfileDataType
+// }
 
-	postsData: PostsDataType,
-	profileData: ProfileDataType
-}
+// export type PostsDataType = Array <PostType>
 
-export type PostsDataType = Array <{ id:number, value:string, likeCount:number }>
+// type PostType = {
+// 	id:number
+// 	value:string
+// 	likeCount:number
+// }
 
 export type ContactsType = {
 	facebook: string|null,
@@ -18,67 +23,66 @@ export type ContactsType = {
 }
 
 export type PhotosType = {
-	large: string
-	small: string
+	large: string | null
+	small: string | null
 }
 
-export type ProfileDataType = 	{
+export type ProfileDataType = {
 		contacts: {
-				facebook: 'test' ,
-				vk:'test',
-				twitter:'test',
-				instagram:'inst',
-				skype: 'skyp',
-				icq: 'icque',
-				email: 'emal',
-				googlePlus: 'googlePl',
-				whatsApp: 'watsap'
-			},
-		// photos: {
-		// 		large: null,
-		// 		small: null 
-		// 	},
-		isLookingForAJob: true ,
-		lookingForAJobDescription: 'test',
-		fullName: 'Роман Костин',
-		userId: 5084 ,
-		aboutMe: 'test' ,
-		// status: 'в поисках работы'
+			facebook: string|null,
+			website:string|null
+			vk:string|null
+			twitter:string|null
+			instagram:string|null
+			youtube:string|null
+			github:string|null
+			mainLink:string|null
+		}
+		photos: {
+			large: string | null
+			small: string | null
+		}
+		isLookingForAJob: boolean
+		lookingForAJobDescription: string
+		fullName: string
+		userId: number
+		aboutMe: string
+		status: string | null
 		}
 
 
-export let initinalState = {
+export const initinalState = {
 	postsData:[
 		{id:1, value:'Первое',likeCount:0},
 		{id:2, value:'Двадцать пятое', likeCount:0}
-	] ,
+	] as Array<{id:number, value:string,likeCount:number}> ,
+	
 		profileData: 
 		{
 		contacts: {
-				facebook: 'test' ,
-				vk:'test',
-				twitter:'test',
-				instagram:'inst',
-				skype: 'skyp',
-				icq: 'icque',
-				email: 'emal',
-				googlePlus: 'googlePl',
-				whatsApp: 'watsap'
+				facebook: 'test' as string | null ,
+				website:'test' as string | null,
+				vk:'test' as string | null,
+				twitter:'test' as string | null,
+				instagram:'test' as string | null,
+				youtube:'test' as string | null,
+				github:'test' as string | null,
+				mainLink:'test' as string | null
 			},
-		// photos: {
-		// 		large: null,
-		// 		small: null 
-		// 	},
-		isLookingForAJob: true ,
-		lookingForAJobDescription: 'test',
-		fullName: 'Роман Костин',
-		userId: 5084 ,
-		aboutMe: 'test' ,
-		// status: 'в поисках работы'
+		photos: {
+				large: null as string | null,
+				small: null as string | null
+			},
+		isLookingForAJob: true as boolean,
+		lookingForAJobDescription: 'test' as string | null,
+		fullName: 'Роман Костин' as string,
+		userId: 5084 as number ,
+		aboutMe: 'test' as string | null ,
+		status: 'в поисках работы' as string
 		}
 }
 
-export type InitinalStateType = typeof initinalState
+export type ProfileInitinalType = typeof initinalState
 
 
 

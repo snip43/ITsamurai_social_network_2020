@@ -3,7 +3,7 @@ import React,{Component} from 'react';
 import {connect, ConnectedProps} from 'react-redux';
 	
 import {logout} from '../../redux/auth_login-reducer'
-import { StateReducers } from '../../redux/redux-store';
+import { AppStateType } from '../../redux/redux-store';
 
 
 class AuthContainer extends Component<Props> {
@@ -13,7 +13,7 @@ class AuthContainer extends Component<Props> {
 	}
 }
 
-const mapStateToProps = (state: StateReducers) => {
+const mapStateToProps = (state: AppStateType) => {
 	return {
 		email: state.authLogin.data.email,
 		login: state.authLogin.data.login,

@@ -1,17 +1,19 @@
 import {connect} from 'react-redux';
-import ProfileInfoContainer from '../ProfileInfoContainer/';
+import ProfileInfoContainer from '../ProfileInfoContainer';
 import {withRouter} from 'react-router-dom';
-import {setPhotosLargeProfile,setNameNewProfile,setLookingForJobDescription,setIsLookingForJob,setAboutMe} from '../../redux/profile-reducer';
+import {setPhotosLargeProfile,setNameNewProfile,setLookingForAJobDescription,setIsLookingForAJob,setAboutMe} from '../../redux/profile-reducer';
+import { AppStateType } from '../../redux/redux-store';
+import { compose } from 'redux';
 
 
-const mapStateToProps = (state)=> {
+const mapStateToProps = (state:AppStateType)=> {
 	return {
 		userId: state.profilePage.profileData.userId,
 		large: state.profilePage.profileData.photos.large,
 		fullName: state.profilePage.profileData.fullName,
 		aboutMe: state.profilePage.profileData.aboutMe,
-		lookingForJobDescription: state.profilePage.profileData.lookingForJobDescription,
-		isLookingForJob: state.profilePage.profileData.isLookingForJob
+		lookingForAJobDescription: state.profilePage.profileData.lookingForAJobDescription,
+		isLookingForAJob: state.profilePage.profileData.isLookingForAJob
 	}
 }
 
@@ -19,8 +21,8 @@ const mapDispatchToProps = {
 	setPhotosLargeProfile,
 	setNameNewProfile,
 	setAboutMe,
-	setIsLookingForJob,
-	setLookingForJobDescription
+	setIsLookingForAJob,
+	setLookingForAJobDescription
 }
 
 const ProfileInfoContainerBox  = compose(

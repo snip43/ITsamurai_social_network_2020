@@ -1,9 +1,9 @@
-import { StateReducers } from '../redux/redux-store'
+import { AppStateType } from '../redux/redux-store'
 
 
-export const getIsAuth = (state: StateReducers) => {
+export const getIsAuth = (state: AppStateType): boolean => {
 	return state.authLogin.data.isAuth;
 }
-export const getProfile = (state: StateReducers) => {
+export const getProfile = (state: AppStateType) => {
 	return state.profilePage.profileData;
 }

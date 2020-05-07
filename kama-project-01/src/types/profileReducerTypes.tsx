@@ -31,12 +31,12 @@ export type SetAboutMeType = {
 	aboutMe:string|null
 }
 
-export type SetIsLookingForJobType = {
+export type SetIsLookingForAJobType = {
 	type:typeof SET_IS_LOOKING_FOR_JOB
-	isLookingForJob:boolean
+	isLookingForAJob:boolean
 }
 
-export type SetLookingForJobDescriptionType = {
+export type SetLookingForAJobDescriptionType = {
 	type:typeof SET_LOOKING_FOR_JOB_DESCRIPTION
 	description:string|null
 }
@@ -56,5 +56,5 @@ export type SavePhotoSuccessType = {
 	photos: string
 }
 
-export type ProfileReducersActionTypes = AddPostOnReduxFormType & SetPhotosLargeProfileType & SetNameNewProfileType & SetAboutMeType & SetIsLookingForJobType & SetLookingForJobDescriptionType & SetStatusType & SetLikeType & SavePhotoSuccessType;
+export type ProfileReducersActionTypes = AddPostOnReduxFormType & SetPhotosLargeProfileType & SetNameNewProfileType & SetAboutMeType & SetIsLookingForAJobType & SetLookingForAJobDescriptionType & SetStatusType & SetLikeType & SavePhotoSuccessType;
 

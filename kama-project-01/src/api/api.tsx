@@ -1,7 +1,8 @@
 import Axios from 'axios';
-import { MeResponseType, LoginResponseType, DeleteResponseType } from '../types/apiTypes';
+import { MeResponseType, LoginResponseType, DeleteResponseType, GetProfileInfoType } from '../types/apiTypes';
 import { UserType } from '../types/findUsersTypes';
 import { ProfileDataType, PhotosType } from '../types/profileTypes';
+import { AppStateType } from '../redux/redux-store';
 
 const instance = Axios.create({
 	baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -51,7 +52,7 @@ export const usersAPI = {
 				})
 	},
 	getProfileInfo(id:number) {
-		return instance.get<ProfileDataType>(`profile/${id}`)
+		return instance.get<GetProfileInfoType>(`profile/${id}`)
 			.then( response=>{
 				return response.data;
 		})
@@ -62,10 +63,11 @@ export const usersAPI = {
 	updateStatus(status:string| null) {
 		return instance.put<DeleteResponseType>(`/profile/status`, {status: status})
 		},
-	savePhoto(photoFile:string | Blob) {
+	savePhoto(photoFile: string | Blob) {
 		const formData = new FormData();
+
 		formData.append('image',photoFile)
-			return instance.put<savePhotoType>('/profile/photo',formData, {
+			return instance.put<any>('/profile/photo',formData, {
 					headers: {
 						'Content-Type': 'multipart/form-data'
 					}

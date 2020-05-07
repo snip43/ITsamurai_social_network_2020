@@ -1,8 +1,8 @@
 import { getAuthMe } from "./auth_login-reducer";
-import { SET_SUCCESS, SetSuccessActionType, initinalStateType, ActionTypes, GetStateType } from '../types/appReducersTypes';
-import { Dispatch } from "redux";
+import { SET_SUCCESS, SetSuccessActionType, initinalStateType, ActionTypes } from '../types/appReducersTypes';
+// import { Dispatch } from "redux";
 
-let initinalState:initinalStateType = {
+let initinalState: initinalStateType = {
 	initialized: false
 }
 
@@ -20,7 +20,7 @@ const appReducer = (state = initinalState, action:ActionTypes):initinalStateType
 
 export const initSuccess = ():SetSuccessActionType => ({type:SET_SUCCESS});
 
-export const initApp = () => async(dispatch:Dispatch<>, getState: GetStateType) => {
+export const initApp = () => async(dispatch:any) => {
 	let promise = await dispatch(getAuthMe());
 
 	Promise.all([promise])

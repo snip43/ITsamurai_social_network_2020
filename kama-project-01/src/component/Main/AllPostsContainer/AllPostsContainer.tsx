@@ -1,31 +1,34 @@
 import AllPosts from '../AllPosts/allPosts';
-import {connect} from 'react-redux';
-import { StateReducers } from '../../../redux/redux-store'
+import {connect, ConnectedProps} from 'react-redux';
+// import { AppStateType } from '../../../redux/redux-store'
 import { setLike } from '../../../redux/profile-reducer';
 import { SetLikeType } from '../../../types/profileReducerTypes';
-import { PostsDataType } from '../../../types/profileTypes';
+import { PostsDataType, InitinalStateType } from '../../../types/profileTypes';
 
-interface StateProps {
+type StateProps = {
   postsData: PostsDataType
 }
 
-interface DispatchProps {
+type DispatchProps = {
   setLike: (userId: number) => SetLikeType
 }
 
-export type PropsAllPosts = StateProps & DispatchProps
 
-const mapStateToProps = (state: StateReducers)=> {
+
+const mapStateToProps = (state: InitinalStateType): StateProps => {
 		return {
-			postsData: state.profilePage.postsData
+			postsData: state.postsData
 		}
 	}
 
-	const mapDispatchToProps = {
+	const mapDispatchToProps: DispatchProps = {
 		setLike
 	}
 
+	const connector = connect(mapStateToProps,mapDispatchToProps)
+	type PropsFromRedux = ConnectedProps<typeof connector>
 
-const AllPostsContainer = connect<StateProps, DispatchProps>(mapStateToProps,mapDispatchToProps)(AllPosts); 
+	export type PropsAllPosts = PropsFromRedux
+// const AllPostsContainer = connect<StateProps, DispatchProps>(mapStateToProps,mapDispatchToProps)(AllPosts); 
 
-export default AllPostsContainer;
+export default connector(AllPosts);

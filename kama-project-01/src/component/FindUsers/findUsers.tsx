@@ -1,10 +1,10 @@
 import UsersContainer from '../UsersContainer';
 import {connect, ConnectedProps} from 'react-redux';
 import {follow,	unfollow,	toggleIsFetching,getUsers,setCurrentPage} from '../../redux/findUsers-reducer';
-import { StateReducers } from '../../redux/redux-store';
+import { AppStateType } from '../../redux/redux-store';
 
 
-const mapStateToProps = (state: StateReducers) => {
+const mapStateToProps = (state: AppStateType) => {
 
 	return {
 		usersData: state.findUsersPage.usersData,

@@ -7,7 +7,7 @@ export type SetUserDataACDataType = {
 	isAuth:boolean
 }
 
-export type InitinalStateType = {
+export type AuthLoginInitinalStateType = {
 	data: {
 		userId: number | null,
 		email: string | null,

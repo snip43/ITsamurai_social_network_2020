@@ -26,15 +26,15 @@ componentDidUpdate(prevProps,prevState) {
 
 	render() {
 
-		const {aboutMe,fullName,isLookingForJob,lookingForJobDescription,status} = this.props.profile;
+		const {aboutMe,fullName,isLookingForAJob,lookingForAJobDescription,status} = this.props.profile;
 
 		return <ProfileInfo 
 		savePhoto = {this.props.savePhoto}
 							isOwner = {!this.props.match.params.userId}
 							large={this.props.profile.photos.large}
 							name={fullName}
-							isLookingForJob={isLookingForJob}
-							lookingForJobDescription={lookingForJobDescription} 
+							isLookingForAJob={isLookingForAJob}
+							lookingForAJobDescription={lookingForAJobDescription} 
 							aboutMe={aboutMe}
 							status ={status}
 							updateProfileStatus = {this.props.updateProfileStatus}

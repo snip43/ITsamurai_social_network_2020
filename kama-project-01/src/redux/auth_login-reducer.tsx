@@ -1,8 +1,8 @@
 import { authAPI, ResultCodesEnum } from '../api/api';
 import {stopSubmit} from 'redux-form';
-import {GET_USER_DATA,SetUserDataACType,ActionAuthLoginTypes,InitinalStateType} from '../types/auth-loginTypes'
+import {GET_USER_DATA,SetUserDataACType,ActionAuthLoginTypes,AuthLoginInitinalStateType} from '../types/auth-loginTypes'
 
-const initinalState: InitinalStateType = {
+const initinalState: AuthLoginInitinalStateType = {
 	data: {
 		userId: null,
 		email: null,
@@ -11,7 +11,7 @@ const initinalState: InitinalStateType = {
 	}
 }
 
-const authLoginReducer = (state = initinalState, action:ActionAuthLoginTypes):InitinalStateType => {
+const authLoginReducer = (state = initinalState, action:ActionAuthLoginTypes):AuthLoginInitinalStateType => {
 	switch(action.type) {
 		case GET_USER_DATA:
 			return {

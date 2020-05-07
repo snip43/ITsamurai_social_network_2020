@@ -12,7 +12,7 @@ const ProfileInfo = (props) => {
 		return <Preloader />
 	}
 
-const isLook = () =>  props.isLookingForJob ? 'Ищу' : 'Не ищу' 
+const isLook = () =>  props.isLookingForAJob ? 'Ищу' : 'Не ищу' 
 
 const onPictureSelected = (e) => {
 	if(e.target.files.length) {
@@ -38,7 +38,7 @@ const onPictureSelected = (e) => {
 							<MeStatusWithHooks status={props.status} updateProfileStatus={props.updateProfileStatus}/>
 							
 							<p className='mt-5'><b>В поисках работы: </b>{isLook()}</p>
-							<p><b>Примечания по поиску работы: </b>{props.lookingForJobDescription}</p>
+							<p><b>Примечания по поиску работы: </b>{props.lookingForAJobDescription}</p>
 							<p><b>Обо мне: </b>{props.aboutMe}</p>
 							<p><b>Мои контакты: </b>{props.contacts}</p>
 							
